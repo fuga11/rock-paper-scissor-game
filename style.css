@@ -25,7 +25,8 @@ body{
 .score{
   margin-top: 60px;
 }
-.res-score-but{
+.res-score-but,
+.auto-play-button{
   background-color: white;
   border: none;
   font-size: 15px;
