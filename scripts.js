@@ -18,7 +18,7 @@ function autoplay(){
     isAutoPlaying = true;
   }else{
     clearInterval(intervalID);
-    isAutoPlaying = false
+    isAutoPlaying = false;
   }
 } 
 
