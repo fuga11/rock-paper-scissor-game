@@ -5,10 +5,12 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 };
 
 updateScoreElement();
-
+let PlayerBalance = 10;
 let isAutoPlaying = false;
 let intervalID;
-
+function UpdateBalance(){
+  document.querySelector('.balance').textContent = `You balance:${PlayerBalance}`;
+}
 function autoplay(){
   if (!isAutoPlaying){
     intervalID = setInterval(function(){
@@ -16,6 +18,7 @@ function autoplay(){
       playGame(playerMove);
     }, 1000);
     isAutoPlaying = true;
+    UpdateBalanc();
   }else{
     clearInterval(intervalID);
     isAutoPlaying = false;
@@ -29,28 +32,37 @@ function playGame(playerMove) {
   if (playerMove === 'scissors') {
     if (computerMove === 'rock') {
       result = 'You lose.';
+      PlayerBalance -= 1;
     } else if (computerMove === 'paper') {
       result = 'You win.';
+      PlayerBalance += 1;
     } else if (computerMove === 'scissors') {
       result = 'Tie.';
+      PlayerBalance -= 0.25;
     }
 
   } else if (playerMove === 'paper') {
     if (computerMove === 'rock') {
       result = 'You win.';
+      PlayerBalance += 1;
     } else if (computerMove === 'paper') {
       result = 'Tie.';
+      PlayerBalance -= 0.25;
     } else if (computerMove === 'scissors') {
       result = 'You lose.';
+      PlayerBalance -= 1;
     }
     
   } else if (playerMove === 'rock') {
     if (computerMove === 'rock') {
       result = 'Tie.';
+      PlayerBalance -= 0.25;
     } else if (computerMove === 'paper') {
       result = 'You lose.';
+      PlayerBalance -= 1;
     } else if (computerMove === 'scissors') {
       result = 'You win.';
+      PlayerBalance += 1;
     }
   }
 
@@ -74,6 +86,7 @@ function playGame(playerMove) {
   - 
   <img class = "move-ico" src = "image/${computerMove}-emoji.png">
   Computer`;
+  UpdateBalance();
 }
 
 function updateScoreElement() {

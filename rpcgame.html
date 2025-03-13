@@ -6,16 +6,17 @@
   </head>
   <body>
     <p class="title">Rock Paper Scissors</p>
+    <p class="balance"></p>
     <button class="movebutton" onclick="
-      playGame('rock');
+      playGame('rock'); UpdateBalance();
     "><img class="move-ico" src="image/rock-emoji.png" alt=""></button>
 
     <button class="movebutton"  onclick="
-      playGame('paper');
+      playGame('paper'); UpdateBalance();
     "><img class="move-ico" src="image/paper-emoji.png" alt=""></button>
 
     <button class="movebutton" onclick="
-      playGame('scissors');
+      playGame('scissors'); UpdateBalance();
     "><img class="move-ico" src="image/scissors-emoji.png" alt=""></button>
 
     <p class="js-result result"></p>
