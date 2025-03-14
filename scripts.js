@@ -4,18 +4,19 @@ let score = JSON.parse(localStorage.getItem('score')) || {
   ties: 0
 };
 
-function IsZeroBalance(){
-  if (PlayerBalance > 1){
+function IsZeroBalance() {
+  if (PlayerBalance >= 1) {
     return true;
-  }
-  else{
-    setTimeout(()=>{
-      document.querySelector('.balance').textContent = `You balance ${PlayerBalance}`;
-    },3000);
-    document.querySelector('.balance').textContent = `Your balance is not enough for the game, please top it up.`;
+  } else {
+    const balanceElement = document.querySelector('.balance');
+    balanceElement.textContent = `Your balance is not enough for the game, please top it up.`;
+    setTimeout(() => {
+      balanceElement.textContent = `Your balance: ${PlayerBalance}`;
+    }, 3000);
     return false;
   }
 }
+/*
 function autoplay(){
   if (!isAutoPlaying){
     intervalID = setInterval(function(){
@@ -28,10 +29,24 @@ function autoplay(){
     isAutoPlaying = false;
   }
 } 
+*/
+const autoplayButton = document.querySelector('.auto-play-button');
+let intervalId = null;
+
+autoplayButton.addEventListener('click', () => {
+  if (!intervalId) {
+    intervalId = setInterval(() => {
+      const playerMove = pickComputerMove();
+      playGame(playerMove);
+    }, 1000);
+  } else {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+});
+
 updateScoreElement();
 let PlayerBalance = 2;
-let isAutoPlaying = false;
-let intervalID;
 function UpdateBalance(){
   document.querySelector('.balance').textContent = `You balance:${PlayerBalance}`;
 }
