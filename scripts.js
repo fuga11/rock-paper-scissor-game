@@ -32,14 +32,15 @@ function autoplay(){
 */
 const autoplayButton = document.querySelector('.auto-play-button');
 let intervalId = null;
-
 autoplayButton.addEventListener('click', () => {
   if (!intervalId) {
     intervalId = setInterval(() => {
       const playerMove = pickComputerMove();
       playGame(playerMove);
     }, 1000);
+    autoplayButton.textContent = 'Stop autoplay';
   } else {
+    autoplayButton.textContent = 'Autoplay';
     clearInterval(intervalId);
     intervalId = null;
   }
@@ -147,3 +148,4 @@ function pickComputerMove() {
 
   return computerMove;
 }
+
