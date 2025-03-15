@@ -40,3 +40,27 @@ body{
   width: 400px;
   margin-top: 10px;
 }
+.yes{
+  background-color: black;
+  color: white;
+  border-color: wheat;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 35%;
+  margin-bottom: 5px;
+}
+.no{
+  background-color: black;
+  color: white;
+  border-color: wheat;
+  margin-left: 15px;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 5px;
+}
+.confirmmessagetext{
+  align-items: center;
+  text-align: center;
+}

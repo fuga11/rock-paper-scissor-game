@@ -23,18 +23,9 @@
     <p class="js-moves"></p>
     <p class="js-score score"></p>
 
-    <button class="res-score-but" onclick="
-      score.wins = 0;
-      score.losses = 0;
-      score.ties = 0;
-      localStorage.removeItem('score');
-      updateScoreElement();
-    ">Reset Score</button>
+    <button class="res-score-but" onclick="resetButtonManager();">Reset Score</button>
     <button class="auto-play-button";>Auto Play</button>
-    <div class="confirmationmessage">
-      <p style="display: inline-block;">Are youn sure you want to reset the score?</p>
-      <button>yes</button>
-      <button>no</button>
+    <div class="cinfirmationmessageowner">
     </div>
     <script src="scripts.js" onclick="
     "></script>

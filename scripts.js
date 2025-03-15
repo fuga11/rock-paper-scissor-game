@@ -149,3 +149,29 @@ function pickComputerMove() {
   return computerMove;
 }
 
+function resetscore(){
+  score.wins = 0;
+  score.losses = 0;
+  score.ties = 0;
+  localStorage.removeItem('score');
+  updateScoreElement();
+}
+let confirmationAcrive = false;
+function resetButtonManager(){
+  console.log('вход')
+  if (!confirmationAcrive){
+    confirmationAcrive = true;
+    document.querySelector('.cinfirmationmessageowner').innerHTML=(
+      '<div class="confirmationmessage"><p class="confirmmessagetext">Are youn sure you want to reset the score?</p><button class="yes">yes</button><button class="no">no</button></div>'
+    )
+    document.querySelector('.yes').addEventListener('click',()=>{
+      resetscore();
+      document.querySelector('.cinfirmationmessageowner').innerHTML=('');
+      confirmationAcrive = false;
+    })
+    document.querySelector('.no').addEventListener('click',()=>{
+      document.querySelector('.cinfirmationmessageowner').innerHTML=('');
+      confirmationAcrive = false;
+    })
+  }else{confirmationAcrive = false;document.querySelector('.cinfirmationmessageowner').innerHTML=('')};
+}
